@@ -62,7 +62,7 @@ class DevelopersController < ApplicationController
 
 
   def set_developer
-    @developer = Developer.find(params[:username])
+    @developer = Developer.find_by(username: params[:username])
   end
 
 end
