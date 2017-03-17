@@ -6,7 +6,7 @@ class CreateProjects < ActiveRecord::Migration[5.0]
       t.text :description
       t.date :date_completed
       t.string :url
-      t.string :type
+      t.string :category
 
       t.timestamps
     end

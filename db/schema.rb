@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20170317010657) do
     t.text     "description"
     t.date     "date_completed"
     t.string   "url"
-    t.string   "type"
+    t.string   "category"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["developer_id"], name: "index_projects_on_developer_id", using: :btree

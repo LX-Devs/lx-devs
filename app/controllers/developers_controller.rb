@@ -16,7 +16,7 @@ class DevelopersController < ApplicationController
   end
 
   def create
-    @developer.build(developer_params)
+    @developer = Developer.new(developer_params)
     @developer.user = current_user
     if @developer.save
       if params[:photos]
@@ -29,7 +29,7 @@ class DevelopersController < ApplicationController
           @developer.project.create(project)
         end
       end
-      redirect_to :show, notice: "Your profile has been successfully saved!"
+      render :show, notice: "Your profile has been successfully saved!"
     else
       render :new, alert: "Your profile could not be saved."
     end
