@@ -4,6 +4,7 @@ class DevelopersController < ApplicationController
 
   def new
     @developer = Developer.new
+    @developer.projects.build
   end
 
   def edit
@@ -15,11 +16,24 @@ class DevelopersController < ApplicationController
   end
 
   def create
-    @developer = current_user.developer.build(developer_params)
+    @developer.build(developer_params)
+    @developer.user = current_user
     if @developer.save
+      if params[:photos]
+        params[:photos].each do |photo|
+          @developer.photo.create(image: photo)
+        end
+      end
+      if params[:projects]
+        params[:projects].each do |project|
+          @developer.project.create(project)
+        end
+      end
       redirect_to :show, notice: "Your profile has been successfully saved!"
     else
       render :new, alert: "Your profile could not be saved."
+    end
+
   end
 
   def show
@@ -37,17 +51,18 @@ class DevelopersController < ApplicationController
         end
       end
     redirect_to :show, notice: "Your profile has been successfully updated!"
+    end
   end
 
   private
 
   def developer_params
-    params.require(:developer).permit(:username, :first_name, :last_name, :title, :description, :language1, :language2, :language3, :language4, :nationality, :birthday, photos: [])
+    params.require(:developer).permit(:username, :first_name, :last_name, :title, :description, :language1, :language2, :language3, :language4, :nationality, :birthday, photos: [], projects_attributes: [:name, :description, :date_completed, :url, :type])
   end
 
 
   def set_developer
-  @developer = Developer.find(params[:username])
+    @developer = Developer.find(params[:username])
   end
 
 end
