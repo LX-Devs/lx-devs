@@ -26,6 +26,11 @@ group :development, :test do
   gem 'spring'
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  gem 'factory_girl'
+  gem 'capybara', '~> 2.0'
+  gem 'rspec-rails', '~> 3.5.0'
+  gem 'email_spec'
 end
 
 # added gems
