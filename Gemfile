@@ -42,3 +42,4 @@ gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem "validate_url"
 gem 'cocoon'
+gem 'country_select'

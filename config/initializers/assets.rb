@@ -11,5 +11,5 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( cocoon.js )
 
-Rails.application.config.assets.precompile += %w( g.scss )
-Rails.application.config.assets.precompile += %w( g1.scss )
+
+

@@ -122,7 +122,7 @@ SimpleForm.setup do |config|
   # To stop SimpleForm from generating the novalidate option, enabling the HTML5 validations,
   # change this configuration to true.
   config.browser_validations = false
-
+  config.input_mappings = { /country/ => :string }
   # Collection of methods to detect if a file type was given.
   # config.file_methods = [ :mounted_as, :file?, :public_filename ]
 
