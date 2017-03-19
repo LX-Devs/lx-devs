@@ -29,6 +29,10 @@ class DevelopersController < ApplicationController
           @developer.project.create(project)
         end
       end
+      filename = "app/views/developers/profiles/_" + @developer.username + ".html.erb"
+      File.open(filename, "w+") do |file|
+        file.write("<h1>Hi #{@developer.first_name}!</h1><br><h2>You are now ready to create your view in the app!</h2>")
+      end
       render :show, notice: "Your profile has been successfully saved!"
     else
       render :new, alert: "Your profile could not be saved."
