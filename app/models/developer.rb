@@ -1,6 +1,6 @@
 class Developer < ApplicationRecord
   belongs_to :user
-  has_many :projects
+  has_many :projects, dependent: :destroy
   has_attachments :photo, maximum: 5
   validates_uniqueness_of :username, :message => "That username is already in use"
   validates_presence_of :username, :first_name, :last_name, :title, :description, :language1, :message => "This field can't be blank"
