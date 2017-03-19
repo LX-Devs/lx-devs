@@ -61,7 +61,7 @@ class DevelopersController < ApplicationController
   private
 
   def developer_params
-    params.require(:developer).permit(:username, :first_name, :last_name, :title, :description, :language1, :language2, :language3, :language4, :nationality, :birthday, photos: [], projects_attributes: [:name, :description, :date_completed, :url, :type])
+    params.require(:developer).permit(:username, :first_name, :last_name, :title, :description, :language1, :language2, :language3, :language4, :nationality, :birthday, photos: [], projects_attributes: [:name, :description, :date_completed, :url, :type, :_destroy, :id])
   end
 
 
