@@ -1,7 +1,6 @@
 
 
 <%= simple_form_for @developer do |f| %>
-    <%= f.input :username %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.input :title %>
@@ -21,5 +20,6 @@
     <div class="links">
       <%= link_to_add_association "Add a Project", f, :projects, class: 'btn btn-default' %>
       <%= f.button :submit  %>
-    </div>
   <%end  %>
+    <%= button_to 'Delete this profile', developer_path(username: @developer.username), method: :delete, class: 'btn btn-default' %>
+    </div>
