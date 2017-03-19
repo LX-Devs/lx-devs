@@ -1,21 +1,3 @@
-<%= simple_form_for @developer do |f| %>
-<%= f.input :username %>
-<%= f.input :first_name %>
-<%= f.input :last_name %>
-<%= f.input :title %>
-<%= f.input :description %>
-<%= f.input :language1 %>
-<%= f.input :language2 %>
-<%= f.input :language3 %>
-<%= f.input :language4 %>
-<%= f.input :nationality %>
-<%= f.input :birthday %>
-<%= f.simple_fields_for :projects do |p| %>
-<%= p.input :name %>
-<%= p.input :description %>
-<%= p.input :date_completed %>
-<%= p.input :url %>
-<%= p.input :category %>
-<%end  %>
-<%= f.submit  %>
-<%end  %>
+<div class="container">
+  <%= render 'form' %>
+</div>

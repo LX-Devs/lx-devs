@@ -1,0 +1,10 @@
+<div class="form-inline nested-fields">
+  <%= f.input :name %>
+  <div class="field">
+    <%= f.input :description %>
+  </div>
+  <%= f.input :date_completed %>
+  <%= f.input :url %>
+  <%= f.input :category %>
+  <%= link_to_remove_association 'Remove a project', f, class: 'btn btn-default' %>
+</div>
