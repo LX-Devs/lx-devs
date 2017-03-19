@@ -29,10 +29,34 @@ class DevelopersController < ApplicationController
           @developer.project.create(project)
         end
       end
-      filename = "app/views/developers/profiles/_" + @developer.username + ".html.erb"
-      File.open(filename, "w+") do |file|
-        file.write("<h1>Hi #{@developer.first_name}!</h1><br><h2>You are now ready to create your view in the app!</h2>")
+
+      # creates a new view partial file with the username of the developer
+      viewfile_path = "app/views/developers/profiles/_#{@developer.username.downcase}.html.erb"
+      viewfile_content = "<\% content_for :head do %><%= stylesheet_link_tag '#{@developer.username.downcase}' %>\n<\% end %><h1>Hi #{@developer.first_name}!</h1><br><h2>You are now ready to create your view in the app!</h2>"
+      File.open(viewfile_path, "w+") do |file|
+        file.write(viewfile_content)
       end
+
+      # creates a new css file with the username of the developer
+      cssfile_path = "app/assets/stylesheets/#{@developer.username.downcase}.scss"
+      cssfile_content = "
+        @import 'bootstrap-sprockets';\n
+        @import 'bootstrap';\n
+        @import 'font-awesome-sprockets';\n
+        @import 'font-awesome';\n
+        @import 'vendor/index';\n
+      "
+      File.open(cssfile_path, "w+") do |file|
+        file.write(cssfile_content)
+      end
+
+      # writes a new file in the config/initialiazers/assets.rb file to precompile the new css file for the user
+      assetsconfig_path = "config/initializers/assets.rb"
+      assetsconfig_content = "Rails.application.config.assets.precompile += %w( #{@developer.username.downcase}.scss )"
+      File.open(assetsconfig_path, "a") do |file|
+        file.puts(assetsconfig_content)
+      end
+
       render :show, notice: "Your profile has been successfully saved!"
     else
       render :new, alert: "Your profile could not be saved."
