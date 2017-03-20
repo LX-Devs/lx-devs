@@ -19,21 +19,22 @@
     <% if user_signed_in? %>
 
       <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+     <!--  <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
           <i class="fa fa-envelope-o"></i>
           <div class="badge badge-blue">3</div>
         </div>
-      <% end %>
+      <% end %> -->
 
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+           <img src= "http://lorempixel.com/30/30" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+         <!--  <%= image_tag "http://loremflickr.com/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %> -->
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <%= link_to edit_user_registration_path do %>
+                <i class="fa fa-user" aria-hidden="true"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>
             <li>
