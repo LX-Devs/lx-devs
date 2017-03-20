@@ -4,4 +4,6 @@ class User < ApplicationRecord
   has_one :developer, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_attachment :photo
 end
