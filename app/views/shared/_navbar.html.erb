@@ -1,15 +1,23 @@
+
 <div class="navbar-lx">
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
+
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% if current_user.photo %>
+           <%= cl_image_tag current_user.photo.path, class:"avatar dropdown-toggle", id:"navbar-wagon-menu", "data-toggle":"dropdown" %>
+         <% elsif current_user.photo.nil? %>
+           <img src= "http://lorempixel.com/30/30" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+         <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
+
               <%= link_to new_developer_path do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+
               <% end %>
             </li>
             <li>
