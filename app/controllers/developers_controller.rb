@@ -72,6 +72,7 @@ class DevelopersController < ApplicationController
   end
 
   def show
+    @disable_navigation = true
     @disable_stylesheets = true
     @courses = @developer.projects.where(type: "course")
     @projects = @developer.projects.where(type: "project")
